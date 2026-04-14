@@ -32,3 +32,6 @@ java.lang.RuntimeException: Test error
 java.lang.RuntimeException: Test error
 	at com.ollamates.Main.ListModels(Main.java:84) ~[classes/:?]
 	at com.ollamates.Main.main(Main.java:30) ~[classes/:?]
+2026-04-14T11:28:12,157 [main] INFO  com.ollamates.Main - Application started
+2026-04-14T11:33:23,892 [main] INFO  com.ollamates.Main - Application started
+2026-04-14T11:34:55,891 [main] INFO  com.ollamates.Main - Application started

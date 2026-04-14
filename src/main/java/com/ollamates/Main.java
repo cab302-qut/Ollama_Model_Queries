@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * mAKE SURE TO INCLUDE SLF4J Simple Logging Facade for Java (abbreviated SLF4J) acts as a facade for different logging frameworks
@@ -50,7 +51,7 @@ public class Main {
      * @throws URISyntaxException
      * @throws InterruptedException
      */
-        public static void GetLibraryModelTags() throws OllamaBaseException, IOException, URISyntaxException, InterruptedException {
+        public static void GetLibraryModelTags() throws IOException, URISyntaxException, InterruptedException, OllamaBaseException {
             Narration("Getting library model tags\n");
 
             OllamaAPI ollamaAPI = new OllamaAPI(HOST);
@@ -85,13 +86,17 @@ public class Main {
         }
     }
 
-    public static void FindSpecificModel() throws OllamaBaseException, IOException, URISyntaxException, InterruptedException {
+    public static void FindSpecificModel() throws IOException, URISyntaxException, InterruptedException, OllamaBaseException {
         Narration("Finding a specific mode\n");
-        OllamaAPI ollamaAPI = new OllamaAPI(HOST);
+        try {
+            OllamaAPI ollamaAPI = new OllamaAPI(HOST);
 
-        LibraryModelTag libraryModelTag = ollamaAPI.findModelTagFromLibrary("qwen2.5", "7b");
+            LibraryModelTag libraryModelTag = ollamaAPI.findModelTagFromLibrary("qwen2.5", "7b");
 
-        System.out.println(libraryModelTag);
+            System.out.println(libraryModelTag);
+        } catch (Exception ex) {
+            System.out.println("Exception " + ex.getMessage());
+        }
     }
 
     public static void Narration(String narr) {
